@@ -1,0 +1,681 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  clear: both;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+* {
+  border: none;
+  outline: none;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  min-height: 0;
+  height: auto;
+  position: relative;
+}
+*::-webkit-scrollbar {
+  height: 0 !important;
+  width: 0 !important;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none;
+  background-color: transparent;
+  background: transparent;
+  color: hsl(0, 0%, 56%);
+  font-family: Manrope, sans-serif;
+  line-height: 1.4;
+}
+html a,
+html button,
+html input,
+html summary {
+  transition: background-color 0.3s cubic-bezier(0.2, 0, 0, 1), color 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+body {
+  background-color: hsl(0, 0%, 3%);
+  display: flex;
+  flex-direction: row;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+main,
+aside {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+main *,
+aside * {
+  flex-shrink: 0;
+}
+
+nav,
+ul,
+ol {
+  gap: 8px;
+}
+nav[x-variant=row],
+ul[x-variant=row],
+ol[x-variant=row] {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+nav[x-variant=col],
+ul[x-variant=col],
+ol[x-variant=col] {
+  display: flex;
+  flex-direction: column;
+}
+nav[x-variant=grid],
+ul[x-variant=grid],
+ol[x-variant=grid] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 16px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 24px;
+  height: 100%;
+  padding: 16px;
+}
+
+aside {
+  background-color: hsl(0, 0%, 5%);
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 24px;
+  max-width: max-content;
+  padding: 16px;
+}
+@media screen and (max-width: 480px) {
+  aside {
+    display: none;
+  }
+}
+
+var {
+  font-style: normal;
+}
+var[x-variant=price] {
+  color: hsl(128, 48%, 56%);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+a {
+  align-items: center;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+  text-decoration: none;
+  vertical-align: middle;
+  width: max-content;
+}
+a[x-variant=button] {
+  aspect-ratio: 1/1;
+  border-radius: 56px;
+  border: solid 0.132rem;
+  border-color: inherit;
+  padding: 4px;
+  color: hsl(0, 0%, 88%);
+  font-size: 16px;
+}
+a[x-variant=button_outline] {
+  border-radius: 56px;
+  border: solid 0.132rem;
+  border-color: inherit;
+  font-weight: 600;
+  height: 32px;
+  padding: 0 16px;
+}
+a:focus {
+  color: #4DAA57;
+}
+@media (hover: hover) {
+  a:hover {
+    color: #56B35F;
+  }
+}
+a:active {
+  color: #469B4E;
+}
+
+button {
+  align-items: center;
+  color: hsl(0, 0%, 88%);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 4px;
+  border-color: inherit;
+  border-radius: 56px;
+  font-weight: 600;
+  height: 32px;
+  padding: 0 16px;
+  text-decoration: none;
+  vertical-align: middle;
+  width: max-content;
+}
+button[x-variant=filled] {
+  background-color: #4DAA57;
+  border-color: #4DAA57;
+}
+button[x-variant=filled]:focus {
+  background-color: #4DAA57;
+}
+@media (hover: hover) {
+  button[x-variant=filled]:hover {
+    background-color: #56B35F;
+  }
+}
+button[x-variant=filled]:active {
+  background-color: #469B4E;
+}
+button[x-variant=outline] {
+  background-color: transparent;
+  border: solid 0.132rem;
+  border-color: inherit;
+}
+button[x-variant=outline]:focus {
+  color: #4DAA57;
+}
+@media (hover: hover) {
+  button[x-variant=outline]:hover {
+    color: #56B35F;
+  }
+}
+button[x-variant=outline]:active {
+  color: #469B4E;
+}
+button[x-color="7"] {
+  background-color: hsl(0, 0%, 15%);
+}
+button[x-color="7"]:focus {
+  background-color: hsl(0, 0%, 15%);
+}
+@media (hover: hover) {
+  button[x-color="7"]:hover {
+    background-color: hsl(0, 0%, 17%);
+  }
+}
+button[x-color="7"]:active {
+  background-color: hsl(0, 0%, 13%);
+}
+
+figure {
+  background-color: hsl(0, 0%, 17%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+figure img {
+  width: 100%;
+  height: 100%;
+}
+figure[x-variant=logo], figure[x-variant=avatar] {
+  aspect-ratio: 1/1;
+  border-radius: 56px;
+}
+figure[x-variant=logo] {
+  width: 48px;
+}
+figure[x-variant=avatar] {
+  width: 32px;
+}
+
+img {
+  object-fit: cover;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+details[x-variant=collapsible] {
+  border-radius: 16px;
+  overflow: hidden;
+}
+details[x-variant=collapsible] summary {
+  background-color: hsl(0, 0%, 7%);
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  height: 56px;
+}
+details[x-variant=collapsible] *[x-variant=content] {
+  overflow: hidden;
+  background-color: hsl(0, 0%, 5%);
+  border-radius: 0;
+}
+details[x-variant=dropdown] {
+  display: inline-flex;
+  flex-direction: column;
+}
+details[x-variant=dropdown] summary {
+  border-radius: 56px;
+  padding: 8px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  color: hsl(0, 0%, 88%);
+  font-weight: 600;
+  list-style: none;
+  list-style-type: none;
+  z-index: 2;
+  background-color: hsl(0, 0%, 15%);
+}
+details[x-variant=dropdown] summary:focus {
+  background-color: hsl(0, 0%, 15%);
+}
+@media (hover: hover) {
+  details[x-variant=dropdown] summary:hover {
+    background-color: hsl(0, 0%, 17%);
+  }
+}
+details[x-variant=dropdown] summary:active {
+  background-color: hsl(0, 0%, 13%);
+}
+details[x-variant=dropdown] *[x-variant=content] {
+  background-color: hsl(0, 0%, 11%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 56px 16px 16px 16px;
+  border-radius: 32px;
+  color: hsl(0, 0%, 88%);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  min-height: max-content;
+}
+
+article {
+  overflow: hidden;
+}
+article[x-variant=card] {
+  border-radius: 16px;
+  background-color: hsl(0, 0%, 5%);
+}
+article[x-variant=card] header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+article[x-variant=card] *[x-variant=content] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+span {
+  font: inherit;
+}
+span[x-variant=tag] {
+  align-items: center;
+  display: inline-flex;
+  flex-direction: row;
+  gap: 4px;
+  border-radius: 56px;
+  padding: 0 8px;
+  background-color: hsl(0, 0%, 9%);
+  width: max-content;
+  height: 32px;
+}
+
+hr {
+  background-color: hsl(0, 0%, 5%);
+  flex-shrink: 1;
+  width: 100%;
+  height: 0.125rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+code {
+  font-family: monospace;
+}
+
+strong {
+  font-weight: 600;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+hr {
+  background-color: hsl(0, 0%, 5%);
+  display: block;
+  width: 100%;
+  height: 0.132rem;
+}
+
+table {
+  border-collapse: collapse;
+}
+table thead {
+  background-color: hsl(0, 0%, 9%);
+}
+table tbody {
+  background-color: hsl(0, 0%, 5%);
+}
+table tfooter {
+  background-color: hsl(0, 0%, 7%);
+}
+table td,
+table th {
+  padding: 0 8px;
+  height: 8px;
+  border: solid 0.132rem hsl(0, 0%, 7%);
+}
+
+code,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(0, 0%, 88%);
+  font-weight: 600;
+}
+
+label,
+legend,
+small {
+  font-weight: 600;
+}
+
+form {
+  background-color: hsl(0, 0%, 5%);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  border-radius: 16px;
+  gap: 16px;
+  padding: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  gap: 4px;
+  width: 100%;
+  overflow: hidden;
+}
+
+input {
+  border: solid 0.132rem hsl(0, 0%, 5%);
+  border-radius: 8px;
+  color: hsl(0, 0%, 88%);
+  display: flex;
+  align-items: center;
+  flex-shrink: 1;
+  gap: 8px;
+  padding: 0 16px;
+  width: 100%;
+  height: 2.5rem;
+  background-color: hsl(0, 0%, 15%);
+}
+input:focus {
+  border-color: hsl(0, 0%, 15%);
+}
+@media (hover: hover) {
+  input:hover {
+    background-color: hsl(0, 0%, 13%);
+  }
+}
+input[required]:valid {
+  border-color: #56B35F;
+}
+input[type=color] {
+  padding: 0;
+  border: none;
+  outline: none;
+  overflow: hidden;
+}
+input[type=color]::-webkit-color-swatch-wrapper {
+  border: none;
+  outline: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+input[type=color]::-webkit-color-swatch {
+  border: none;
+  outline: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+input[type=color]::-moz-color-swatch {
+  border: none;
+  outline: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
+textarea {
+  background-color: hsl(0, 0%, 9%);
+  border: solid 0.132rem hsl(0, 0%, 9%);
+  border-radius: 16px;
+  color: hsl(0, 0%, 88%);
+  display: block;
+  min-height: 40px;
+  padding: 40px;
+}
+
+/*
+*
+* TypeScale for headings and content
+*
+* - MinorSecond: 1.067;
+* - MajorSecond: 1.125;
+* - MinorThird: 1.200;
+* - MajorThird: 1.250;
+* - PerfectFourth: 1.333;
+* - AugmentedFourth: 1.414;
+* - PerfectFifth: 1.500;
+* - GoldenRatio: 1.618;
+*
+*/
+html {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 15.75px;
+}
+
+h5 {
+  font-size: 17.71875px;
+}
+
+h4 {
+  font-size: 19.93359375px;
+}
+
+h3 {
+  font-size: 22.4252929688px;
+}
+
+h2 {
+  font-size: 25.2284545898px;
+}
+
+h1 {
+  font-size: 28.3820114136px;
+}
+
+small {
+  font-size: 72%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin-inline: auto;
+}
+
+.w-100 {
+  width: 100%;
+  flex-shrink: 1;
+}
+
+.h-100 {
+  height: 100%;
+  flex-shrink: 1;
+}
+
+.align-start {
+  align-items: start;
+  align-content: start;
+}
+.align-center {
+  align-items: center;
+  align-content: center;
+}
+.align-end {
+  align-items: end;
+  align-content: end;
+}
+.align-around {
+  align-items: space-around;
+  align-content: space-around;
+}
+.align-between {
+  align-items: space-between;
+  align-content: space-between;
+}
+.align-evenly {
+  align-items: space-evenly;
+  align-content: space-evenly;
+}
+
+.justify-start {
+  justify-items: start;
+  justify-content: start;
+}
+.justify-center {
+  justify-items: center;
+  justify-content: center;
+}
+.justify-end {
+  justify-items: end;
+  justify-content: end;
+}
+.justify-around {
+  justify-items: space-around;
+  justify-content: space-around;
+}
+.justify-between {
+  justify-items: space-between;
+  justify-content: space-between;
+}
+.justify-evenly {
+  justify-items: space-evenly;
+  justify-content: space-evenly;
+}
+
+.circle {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-content: center;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.floating-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  padding: 8px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, #000000 100%);
+}
+
+.tooltip-wrapper .tooltip {
+  display: inline-flex;
+  align-items: center;
+  background-color: hsl(0, 0%, 17%);
+  border-radius: 56px;
+  padding: 8px;
+  font-size: 88%;
+  font-weight: 600;
+  height: 2rem;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  min-width: min-content;
+  white-space: nowrap;
+  color: hsl(0, 0%, 88%);
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+.tooltip-wrapper .tooltip.top {
+  top: 100%;
+}
+.tooltip-wrapper .tooltip.right {
+  right: 100%;
+  margin-right: 4px;
+}
+.tooltip-wrapper .tooltip.bottom {
+  bottom: 100%;
+}
+.tooltip-wrapper .tooltip.left {
+  left: 100%;
+}
+.tooltip-wrapper:hover .tooltip {
+  opacity: 1;
+}

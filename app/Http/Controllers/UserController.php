@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = Producto::all();
+       // $users = Producto::all();
 
         return view('users.index', compact('users'));
     }
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function downloadPdf()
     {
-        $users = Producto::all();
+        //$users = Producto::all();
 
        view()->share('users.pdf',$users);
 

@@ -1,0 +1,43 @@
+
+ body * {
+    visibility: hidden;
+}
+
+.table {
+    visibility: visible;
+    margin-bottom: 0;
+}
+
+.table thead,
+.table tbody {
+    visibility: visible;
+}
+
+.table th,
+.table td {
+    visibility: visible;
+}
+
+/* En tu archivo CSS principal */
+
+@media print {
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .card {
+      width: 100%;
+    }
+
+    .table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+
